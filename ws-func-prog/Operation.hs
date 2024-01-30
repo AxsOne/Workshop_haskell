@@ -1,16 +1,15 @@
 module Operations where
 
 addition :: Int -> Int -> Int
-addition a b = a + b
+addition = (+)
 
--- substraction
+
 substraction :: Int -> Int -> Int
-substraction a b = a - b
+substraction = (-)
 
--- multiply
 multiply :: Int -> Int -> Int
-multiply a b = a * b
+multiply = (*)
 
 divide :: Int -> Int -> Maybe Int
 divide _ 0 = Nothing
-divide x s = Just (x `div` s)
+divide x s = Just (div x s)
