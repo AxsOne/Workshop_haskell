@@ -5,9 +5,10 @@
 -- filterArr
 --
 import Predicates
+where filterArr
 
 filterArr :: (a -> Bool) -> [a] -> [a]
 filterArr _ [] = []
-filterArr a (x:xs)
-    |   a x == True = x : filterArr a xs
-    | otherwise = filterArr a xs
+filterArr f (a:b)
+    | f a = a : filterArr f b
+    | otherwise = filterArr f b

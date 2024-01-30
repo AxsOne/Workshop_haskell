@@ -5,20 +5,11 @@
 -- Predicates
 --
 module Predicates where
+import Data.Char (isDigit)
 
-isDigit :: [Char] -> Bool
-isDigit [] = True
-isDigit (x:xs)
-    | (x >= '0' || x <= '9') = isDigit xs
+
+predicate :: String -> Bool
+predicate [] = True
+predicate (a:b)
+    | isDigit a = predicate b
     | otherwise = False
-
-isString :: [Char] -> Bool
-isString [] = True
-isString (x:xs) =
-    case x of
-        '+' -> isString xs
-        '-' -> isString xs
-        '*' -> isString xs
-        '/' -> isString xs
-        _ -> False
-

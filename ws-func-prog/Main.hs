@@ -1,5 +1,10 @@
 import Operations
 import System.Environment
+import Operations
+import filterArr
+import parseLine
+import Predicates
+import Tree
 
 verifInt :: [Char] -> Bool
 verifInt [] = True
@@ -13,15 +18,8 @@ readInt  list
     |   verifInt list = read list :: Int
     |   otherwise = 0
 
-main::IO()
+main :: IO ()
 main = do
-    line_ <- getLine
-    let line  = words line_
-    let nb1 = readInt(head line)
-    let op = line!!1
-    let nb2 = readInt(line!!2)
-    case (op, nb1, nb2) of
-        ("+", nb1, nb2) -> print (addition nb1 nb2)
-        ("-", nb1, nb2) -> print (substraction nb1 nb2)
-        ("*", nb1, nb2) -> print (multiply nb1 nb2)
-        ("/", nb1, nb2) -> print (divide nb1 nb2)
+    value <- getLine
+    value_ :: [String] <- return (words value)
+    print (treeTraversal(buildAST (parseLine value_)))
